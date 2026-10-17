@@ -1,0 +1,43 @@
+﻿
+@model ProductCatalog.Models.Product
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<h1>@Model.Name</h1>
+
+<img src="@Model.ImageUrl"
+     alt="@Model.Name"
+     width="400"
+     height="300" />
+
+<h2>Product Information</h2>
+
+<p>
+    <strong>Description:</strong>
+    @Model.Description
+</p>
+
+<p>
+    <strong>Price:</strong>
+    @Model.Price.ToString("C")
+</p>
+
+<p>
+    <strong>Category:</strong>
+    @Model.Category
+</p>
+
+<p>
+    <strong>Available Stock:</strong>
+    @Model.Stock
+</p>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit Product</a>
+</p>
+
+<p>
+    <a asp-action="Index">Back to Product Catalog</a>
+</p>

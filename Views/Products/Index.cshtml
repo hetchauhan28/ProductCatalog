@@ -1,0 +1,52 @@
+﻿
+@model IEnumerable<ProductCatalog.Models.Product>
+
+@{
+    ViewData["Title"] = "Product Catalog";
+}
+
+<h1>Product Catalog</h1>
+
+<p>Browse our available products.</p>
+
+<p>
+    <a asp-action="Create">Add New Product</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>No products are available.</p>
+}
+else
+{
+    @foreach (var product in Model)
+    {
+        <div>
+            <img src="@product.ImageUrl"
+                 alt="@product.Name"
+                 width="250"
+                 height="180" />
+
+            <h2>@product.Name</h2>
+
+            <p>@product.ShortDescription</p>
+
+            <p>
+                <strong>Price:</strong>
+                @product.Price.ToString("C")
+            </p>
+
+            <p>
+                <strong>Category:</strong>
+                @product.Category
+            </p>
+
+            <p>
+                <a asp-action="Details"
+                   asp-route-id="@product.Id">View More</a>
+            </p>
+
+            <hr />
+        </div>
+    }
+}
